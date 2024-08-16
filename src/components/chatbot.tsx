@@ -43,91 +43,95 @@ function App() {
   }
 
   return (
-        <Box
+    <Box
+    sx={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100vh", // Ensures full screen coverage
+      background: "linear-gradient(to right, #2e2e2e, #1c1c1c)", // grey-black gradient
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 3,
+    }}
+  >
+    <Container maxWidth="sm">
+      <Paper
+        elevation={6}
+        sx={{
+          padding: 4,
+          textAlign: "center",
+          transition: "transform 0.5s",
+          "&:hover": {
+            transform: "scale(1.05)",
+          },
+        }}
+      >
+        <Typography
+          variant="h4"
+          component="div"
           sx={{
-            background: "linear-gradient(to right, #2e2e2e, #1c1c1c)", // grey-black gradient
-            minHeight: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: 3,
+            background: "linear-gradient(to right, #9c27b0, #f06292)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            fontWeight: "bold",
           }}
         >
-          <Container maxWidth="sm">
-            <Paper
-              elevation={6}
-              sx={{
-                padding: 4,
-                textAlign: "center",
-                transition: "transform 0.5s",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                },
-              }}
-            >
-              <Typography
-                variant="h4"
-                component="div"
-                sx={{
-                  background: "linear-gradient(to right, #9c27b0, #f06292)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  fontWeight: "bold",
-                }}
-              >
-                <TypewriterComponent
-                  options={{
-                    strings: ["Chatbot", "AI Assistant", "Recommender"],
-                    autoStart: true,
-                    loop: true,
-                  }}
-                />
-              </Typography>
-              <form onSubmit={generateAnswer}>
-                <TextField
-                  required
-                  fullWidth
-                  multiline
-                  minRows={4}
-                  variant="outlined"
-                  margin="normal"
-                  label="Ask anything"
-                  value={question}
-                  onChange={(e) => setQuestion(e.target.value)}
-                />
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                  sx={{ marginTop: 2, color: generatingAnswer ? "inherit" : "#fff" }}
-                  disabled={generatingAnswer}
-                >
-                  {generatingAnswer ? (
-                    <CircularProgress size={24} color="inherit" />
-                  ) : (
-                    "Generate answer"
-                  )}
-                </Button>
-              </form>
-            </Paper>
-            <Paper
-              elevation={6}
-              sx={{
-                padding: 4,
-                textAlign: "center",
-                marginTop: 4,
-                transition: "transform 0.5s",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                },
-              }}
-            >
-              <ReactMarkdown>{answer}</ReactMarkdown>
-            </Paper>
-          </Container>
-        </Box>
-      );
+          <TypewriterComponent
+            options={{
+              strings: ["Chatbot", "AI Assistant", "Recommender"],
+              autoStart: true,
+              loop: true,
+            }}
+          />
+        </Typography>
+        <form onSubmit={generateAnswer}>
+          <TextField
+            required
+            fullWidth
+            multiline
+            minRows={4}
+            variant="outlined"
+            margin="normal"
+            label="Ask anything"
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ marginTop: 2, color: generatingAnswer ? "inherit" : "#fff" }}
+            disabled={generatingAnswer}
+          >
+            {generatingAnswer ? (
+              <CircularProgress size={24} color="inherit" />
+            ) : (
+              "Generate answer"
+            )}
+          </Button>
+        </form>
+      </Paper>
+      <Paper
+        elevation={6}
+        sx={{
+          padding: 4,
+          textAlign: "center",
+          marginTop: 4,
+          transition: "transform 0.5s",
+          "&:hover": {
+            transform: "scale(1.05)",
+          },
+        }}
+      >
+        <ReactMarkdown>{answer}</ReactMarkdown>
+      </Paper>
+    </Container>
+  </Box>
+);
 }
 
 export default App;
