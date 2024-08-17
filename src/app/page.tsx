@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
+import App from "@/components/chatbot";
 
 const Home = () => {
   console.log(process.env.NEXT_PUBLIC_SERP_API_KEY);
@@ -44,6 +45,7 @@ const Home = () => {
 
   return (
     <div>
+      <App />
       <h1>Home</h1>
       <input
         style={{
@@ -58,11 +60,11 @@ const Home = () => {
       {/* Display the fetched data */}
       {link.image && link.title && (
         <div>
-          <h2>{link.title}</h2>
+          {/* <h2>{link.title}</h2>
           <p>{link.desc}</p>
-          <Image src={link.image} alt={link.title} />
+          <img src={link.image} alt={link.title} />
           <p>Pricing: {link.pricing}</p>
-          <p>Rating: {link.rating}</p>
+          <p>Rating: {link.rating}</p> */}
         </div>
       )}
     </div>

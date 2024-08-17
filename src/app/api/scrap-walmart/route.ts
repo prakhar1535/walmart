@@ -49,6 +49,7 @@ export async function POST(req: NextRequest) {
 
     const ProductTitle = results?.title || null;
     const ProductThumbnail = results?.thumbnail || null;
+    const ProductLink = results?.product_page_url || null;
     const ProductDescription = results?.description || null;
     const ProductRating = results?.rating || null;
     const ProductPricing: PrimaryOffer = results?.primary_offer || null;
@@ -60,6 +61,7 @@ export async function POST(req: NextRequest) {
         image: ProductThumbnail,
         pricing: ProductPricing,
         rating: ProductRating,
+        link: ProductLink,
       },
       { status: 200 }
     );
